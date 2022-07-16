@@ -10,6 +10,7 @@ body {
     margin: 0;
 }
 
+
 .header {
     display: flex;
     background-color: lightcoral;
@@ -21,14 +22,26 @@ body {
 .header img {
     height: 80px;
     width: 80px;
+    margin-right: 20px;
 }
+
 
 .sidebar {
     display: flex;
     flex-direction: column;
     background-color: #dddddd;
+    padding-top: 20px;
+}
+
+.sidebar button {
+    margin: 10px 20px;
+}
+
+.sidebar h3 {
+    margin-left: 20px;
 }
 
 .main-content {
     background-color: aquamarine;
+    padding: 0 0 0 30px;
 }
