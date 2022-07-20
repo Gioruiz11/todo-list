@@ -46,7 +46,6 @@ body {
     padding: 0 0 0 30px;
 }
 
-/* figure out how modal css works */
 .modal {
     display: none;
     position: fixed; 
