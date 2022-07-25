@@ -65,3 +65,10 @@ body {
     border: 1px solid black;
     width: 15%;
 }
+
+.priority-image {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    border: 2px solid blue;
+}
