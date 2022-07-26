@@ -1,6 +1,24 @@
+let Project = (title) => {
+    this.title = title;
+    let taskArray = [];
+
+    return {
+        // read
+        getTitle(){
+            return title;
+        },
+        getArray(){
+            return taskArray;
+        },
+        // update
+        setTitle(title){
+            this.title = title;
+        }
+    }
+}
+
 let Task = (title, duedate, priority, description) => {
-// id, title, duedate, priority, desc
-// make factory functions CRUD
+// CRUD factory function
     this.title = title;
     this.duedate = duedate;
     this.priority = priority;
