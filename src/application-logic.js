@@ -1,5 +1,4 @@
 let Project = (title) => {
-    this.title = title;
     let taskArray = [];
 
     return {
@@ -13,16 +12,15 @@ let Project = (title) => {
         // update
         setTitle(title){
             this.title = title;
+        },
+        setTask(task){
+            taskArray.push(task)
         }
     }
 }
 
 let Task = (title, duedate, priority, description) => {
 // CRUD factory function
-    this.title = title;
-    this.duedate = duedate;
-    this.priority = priority;
-    this.description = description;
 
     let id = crypto.randomUUID();
 
@@ -57,9 +55,11 @@ let Task = (title, duedate, priority, description) => {
             this.description = description;
         },
 
-
     }
 
-
 }
+
+
+
+
 export{Task};

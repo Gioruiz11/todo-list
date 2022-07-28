@@ -18,56 +18,73 @@ function showTaskModal(){
 
 // adds created task to DOM to be displayed
 function addTaskToDOM(){
-    //let title = document.getElementById("title").nodeValue;
-    //let duedate = document.getElementById("duedate").nodeValue;
-    //let priority = document.getElementById("priority").nodeValue;
-    //let description = document.getElementById("description").nodeValue;
+    let title = document.getElementById("title").value;
+    let duedate = document.getElementById("duedate").value;
+    let priority = document.getElementById("priority").value;
+    let description = document.getElementById("description").value;
     // task object
-    //let newTask = Task(title, duedate, priority, description);
-
+    let newTask = Task(title, duedate, priority, description);
+    // hook to html container
     let divContainer = document.getElementsByClassName("todo-container")[0];
-    divContainer.style.display = "flex";
-    let leftDiv = document.createElement("div")
-    let rightDiv = document.createElement("div");
 
+    let newTodo = document.createElement("div");
+    newTodo.classList.add("todo")
+
+    let leftDiv = document.createElement("div");
+    leftDiv.classList.add("left-side-todo");
+
+    let rightDiv = document.createElement("div");
+    rightDiv.classList.add("right-side-todo");
     
     let leftPriority = document.createElement("div");
     leftPriority.classList.add("priority-image");
-    /* if(task.getPriority() == "Low"){
+     if(newTask.getPriority() == "low"){
         leftPriority.style.borderColor = "green";
     }
-    if(task.getPriority() == "Medium"){
+    if(newTask.getPriority() == "medium"){
         leftPriority.style.borderColor = "yellow";
     }
-    if(task.getPriority() == "High"){
+    if(newTask.getPriority() == "high"){
         leftPriority.style.borderColor = "red";
-    } */
+    } 
 
     let leftTitle = document.createElement("p");
-   // leftTitle.textContent = task.getTitle();
+    leftTitle.textContent = newTask.getTitle();
 
     let rightDate = document.createElement("p");
-    //rightDate.textContent = task.getDueDate();
+    rightDate.textContent = newTask.getDueDate();
 
     let rightEdit = document.createElement("img");
-    //rightEdit.setAttribute("src", "../images/pen-to-square-solid.svg");
+    rightEdit.setAttribute("src", "../images/pen-to-square-solid.svg");
 
     let rightDelete = document.createElement("img");
-    //rightDelete.setAttribute("src", "../images/trash-can-solid.svg");
+    rightDelete.setAttribute("src", "../images/trash-can-solid.svg");
 
     leftDiv.append(leftPriority, leftTitle);
     rightDiv.append(rightDate, rightEdit, rightDelete);
-    divContainer.append(leftDiv, rightDiv);
+    newTodo.append(leftDiv, rightDiv);
+    divContainer.append(newTodo);
+
+    // click on todo to show information on modal
+    leftDiv.addEventListener("click", expandTask); 
+
+    // Expand task on click, shows description
+    function expandTask(){
+        let modal = document.getElementsByClassName("info-modal")[0];
+        let leftDiv = document.getElementsByClassName("left-side-todo")[0];
+        let infoDescription = document.getElementById("info-description");
+        
+        // onclick, make modal appear
+        leftDiv.onclick = function(){
+            modal.style.display = "block";
+        }
+        // if you click outside window, modal closes
+        window.onclick = function(e){
+            if(e.target == modal){
+                modal.style.display = "none";
+            }
+        }; 
+    } 
 }
 
-function test(){
-    let divContainer = document.getElementsByClassName("todo-container")[0];
-    let test = document.createElement("div");
-    test.textContent = "HENLO";
-    test.style.color = "red"
-    divContainer.append(test);
-
-}
-
-
-export {showTaskModal, addTaskToDOM, test};
+export {showTaskModal, addTaskToDOM};
