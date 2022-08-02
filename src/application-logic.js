@@ -59,7 +59,21 @@ let Task = (title, duedate, priority, description) => {
 
 }
 
+function createNewTask(){
+    let title = document.getElementById("title").value;
+    let duedate = document.getElementById("duedate").value;
+    let priority = document.getElementById("priority").value;
+    let description = document.getElementById("description").value;
+    let newTask = Task(title, duedate, priority, description);
+    return newTask;
+}
+
+function createNewProject(){
+    // get project name
+    // return new project
+}
 
 
 
-export{Task};
+
+export{Task, createNewTask};
