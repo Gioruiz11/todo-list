@@ -17,13 +17,8 @@ function showTaskModal(){
 
 
 // adds created task to DOM to be displayed
-function addTaskToDOM(){
-    let title = document.getElementById("title").value;
-    let duedate = document.getElementById("duedate").value;
-    let priority = document.getElementById("priority").value;
-    let description = document.getElementById("description").value;
-    // task object
-    let newTask = Task(title, duedate, priority, description);
+function addTaskToDOM(newTask){
+    
     // hook to html container
     let divContainer = document.getElementsByClassName("todo-container")[0];
 
@@ -67,13 +62,18 @@ function addTaskToDOM(){
 
     // click on todo to show information on modal
     leftDiv.addEventListener("click", expandTask); 
+    let counter = 0;
 
     // Expand task on click, shows description
     function expandTask(){
         let modal = document.getElementsByClassName("info-modal")[0];
-        let leftDiv = document.getElementsByClassName("left-side-todo")[0];
+        let leftDiv = document.getElementsByClassName("left-side-todo")[counter];
+        console.log(counter);
+        counter++;
+        // Get description of new task
         let infoDescription = document.getElementById("info-description");
-        
+        infoDescription.textContent = newTask.getDescription();
+
         // onclick, make modal appear
         leftDiv.onclick = function(){
             modal.style.display = "block";
@@ -85,6 +85,12 @@ function addTaskToDOM(){
             }
         }; 
     } 
+
+    // Delete task on click
+    rightDelete.addEventListener("click", deleteTask);
+    function deleteTask(){
+
+    }
 }
 
 export {showTaskModal, addTaskToDOM};
